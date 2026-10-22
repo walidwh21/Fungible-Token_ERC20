@@ -1,0 +1,12 @@
+sequenceDiagram
+  participant H as Holder
+  participant T as Token
+  participant S as Spender
+  participant R as Recipient
+  H->>T: approve(S, 500)
+  T-->>H: Approval(H, S, 500)
+  S->>T: transferFrom(H, R, 200)
+  T->>T: _spendAllowance(H, S, 200)
+  T->>T: _move(H, R, 200)
+  T-->>R: Transfer(H, R, 200)
+  Note over T: allowance[H][S] = 300

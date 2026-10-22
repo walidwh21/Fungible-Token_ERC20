@@ -1,0 +1,7 @@
+stateDiagram-v2
+  [*] --> Active: deploy + initial mint
+  Active --> Active: transfer / approve / burn
+  Active --> Active: admin mint (below cap)
+  Active --> Paused: admin pause()
+  Paused --> Active: admin unpause()
+  Paused --> Paused: transfers revert

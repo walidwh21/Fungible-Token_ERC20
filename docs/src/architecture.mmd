@@ -1,0 +1,28 @@
+flowchart TB
+  subgraph IF[interfaces]
+    I1[IFungibleToken]
+    I2[TokenErrors]
+  end
+  subgraph BASE[base]
+    B1[FungibleToken<br/>balances · allowances · _move hook]
+  end
+  subgraph EXT[extensions]
+    E1[Administered]
+    E2[Burnable]
+    E3[Pausable]
+    E4[Capped]
+  end
+  subgraph TOK[tokens]
+    T1[ReferenceToken]
+  end
+  I1 --> B1
+  I2 --> B1
+  B1 --> E2
+  B1 --> E3
+  B1 --> E4
+  E1 --> E3
+  B1 --> T1
+  E1 --> T1
+  E2 --> T1
+  E3 --> T1
+  E4 --> T1

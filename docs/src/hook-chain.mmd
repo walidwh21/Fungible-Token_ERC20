@@ -1,0 +1,5 @@
+flowchart LR
+  A([transfer / mint / burn]) --> B[ReferenceToken._move]
+  B --> C[Capped._move<br/>checks supply after mint]
+  C --> D[Pausable._move<br/>reverts if paused]
+  D --> E[FungibleToken._move<br/>updates balances, emits Transfer]
